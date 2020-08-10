@@ -1,0 +1,28 @@
+{
+"name" : "demo 1",
+"bank" : "bank 1",
+"iban" : "ES99 9999 9999 9999 9999 9999",
+"currency" : "EURO",
+"initialBalance" : "15000",
+"currentBalance" : " "
+}
+
+
+{
+"name" : "demo 2",
+"bank" : "bank 1",
+"iban" : "ES99 9999 9999 9999 9999 9000",
+"currency" : "EURO",
+"initialBalance" : "5000",
+"currentBalance" : " "
+}
+
+
+{
+"name" : "demo 3",
+"bank" : "bank 2",
+"iban" : "ES99 9999 9999 9999 9999 9009",
+"currency" : "EURO",
+"initialBalance" : "1000",
+"currentBalance" : " "
+}
