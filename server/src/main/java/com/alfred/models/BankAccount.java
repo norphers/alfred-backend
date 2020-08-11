@@ -1,14 +1,18 @@
 package com.alfred.models;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "FINANCE_ACCOUNTS")
-public class FinanceAccounts {
+@Table(name = "bankAccounts")
+public class BankAccount {
 
 	public enum Currency {
 		EURO, DOLLAR, POUND
@@ -19,9 +23,9 @@ public class FinanceAccounts {
 	private Long id;
 
 	private String name;
-	
+
 	private String bank;
-	
+
 	private String iban;
 
 	private Currency currency;
@@ -32,11 +36,12 @@ public class FinanceAccounts {
 
 	//
 
-	public FinanceAccounts() {
+	public BankAccount() {
 
 	}
 
-	public FinanceAccounts(Long id, String name, String bank, String iban, Currency currency, int initialBalance, int currentBalance) {
+	public BankAccount(Long id, String name, String bank, String iban, Currency currency, int initialBalance,
+			int currentBalance) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -80,7 +85,7 @@ public class FinanceAccounts {
 	public void setIban(String iban) {
 		this.iban = iban;
 	}
-	
+
 	public Currency getCurrency() {
 		return currency;
 	}
