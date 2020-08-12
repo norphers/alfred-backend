@@ -1,17 +1,15 @@
 package com.alfred.models;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "bankAccounts")
+@Table(name = "banks")
 public class BankAccount {
 
 	public enum Currency {
@@ -33,7 +31,11 @@ public class BankAccount {
 	private int initialBalance;
 
 	private int currentBalance;
-
+	
+	@ManyToOne
+	@JoinColumn(name = "username")
+	private User username;
+	
 	//
 
 	public BankAccount() {
@@ -41,7 +43,7 @@ public class BankAccount {
 	}
 
 	public BankAccount(Long id, String name, String bank, String iban, Currency currency, int initialBalance,
-			int currentBalance) {
+			int currentBalance, User username) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -50,6 +52,7 @@ public class BankAccount {
 		this.currency = currency;
 		this.initialBalance = initialBalance;
 		this.currentBalance = currentBalance;
+		this.username = username;
 	}
 
 	//
@@ -109,5 +112,14 @@ public class BankAccount {
 	public void setCurrentBalance(int currentBalance) {
 		this.currentBalance = currentBalance;
 	}
+
+	public User getUsername() {
+		return username;
+	}
+
+	public void setUser(User username) {
+		this.username = username;
+	}
+	
 
 }

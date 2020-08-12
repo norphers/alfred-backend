@@ -1,24 +1,22 @@
 package com.alfred.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "users")
+@Table(name = "app_users")
 public class User {
-
-	//
 
 	public enum Role {
 		USER, ADMIN
 	}
-	
-	//
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,17 +27,21 @@ public class User {
 	private String lastName;
 
 	private String email;
-	
+
 	private String username;
 
 	private String password;
-
-	private Role role;
 	
+	private Role role;
+
+	@OneToMany(mappedBy = "username")
+	private List<BankAccount> bankAccounts;
+
 	//
 
 	public User() {
-
+		super();
+		bankAccounts = new ArrayList<BankAccount>();
 	}
 
 	public User(String firstName, String lastName, String email, String username, String password, Role role) {
@@ -49,6 +51,7 @@ public class User {
 		this.username = username;
 		this.password = password;
 		this.role = role;
+		bankAccounts = new ArrayList<BankAccount>();
 	}
 
 	//
@@ -85,7 +88,6 @@ public class User {
 		this.email = email;
 	}
 
-	
 	public String getUsername() {
 		return username;
 	}
@@ -108,6 +110,18 @@ public class User {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public List<BankAccount> getBankAccounts() {
+		return bankAccounts;
+	}
+
+	public void addBank(BankAccount account) {
+		bankAccounts.add(account);
+	}
+
+	public void setBankAccounts(List<BankAccount> bankAccounts) {
+		this.bankAccounts = bankAccounts;
 	}
 
 }
