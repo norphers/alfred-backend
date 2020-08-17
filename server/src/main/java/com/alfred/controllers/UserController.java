@@ -3,6 +3,7 @@ package com.alfred.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,7 +14,7 @@ import com.alfred.models.User;
 import com.alfred.repositories.UserRepository;
 import com.alfred.services.UserService;
 
-
+@CrossOrigin(origins= {"http://localhost:4200"})
 @RestController
 @RequestMapping("/api")
 public class UserController {
