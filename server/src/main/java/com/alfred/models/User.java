@@ -1,5 +1,6 @@
 package com.alfred.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,12 +13,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "app_users")
-public class User {
+public class User implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	public enum Role {
 		USER, ADMIN
 	}
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -37,8 +40,6 @@ public class User {
 	@OneToMany(mappedBy = "username")
 	private List<BankAccount> bankAccounts;
 
-	//
-
 	public User() {
 		super();
 		bankAccounts = new ArrayList<BankAccount>();
@@ -53,8 +54,6 @@ public class User {
 		this.role = role;
 		bankAccounts = new ArrayList<BankAccount>();
 	}
-
-	//
 
 	public Long getId() {
 		return id;

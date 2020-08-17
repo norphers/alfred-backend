@@ -15,6 +15,7 @@ import com.alfred.services.UserService;
 
 
 @RestController
+@RequestMapping("/api")
 public class UserController {
 	
 	@Autowired
@@ -23,22 +24,14 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
-	//
-	
-	@RequestMapping("/welcome")
-	public String WelcomePage() {
-		return "Welcome to Alfred APP!";
-	}
-	
-	
 	@GetMapping("/users")
 	public List<User> getAllUsers() {
-		List<User> users = userRepository.findAll();
-		return users;
+		return userService.getAllUsers();
 	}
 	
 	@PostMapping("/users")
 	public User newUser(@RequestBody User user) throws Exception {
 		return userService.newUser(user);
 	}
+
 }

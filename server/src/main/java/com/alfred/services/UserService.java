@@ -16,7 +16,10 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 	
-	// new user
+	public List<User> getAllUsers() {
+		return (List<User>) userRepository.findAll(); 
+	}
+	
 	public User newUser(@RequestBody User user) throws Exception {
 		
 		boolean userExist=false;
@@ -36,4 +39,5 @@ public class UserService {
 			return userRepository.save(user);
 		}
 	}
+	
 }
