@@ -1,14 +1,20 @@
 package com.alfred.models;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "FINANCE_ACCOUNTS")
-public class FinanceAccounts {
+@Table(name = "bank_accounts")
+public class BankAccount implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
 	public enum Currency {
 		EURO, DOLLAR, POUND
@@ -19,9 +25,9 @@ public class FinanceAccounts {
 	private Long id;
 
 	private String name;
-	
+
 	private String bank;
-	
+
 	private String iban;
 
 	private Currency currency;
@@ -29,14 +35,19 @@ public class FinanceAccounts {
 	private int initialBalance;
 
 	private int currentBalance;
-
+	
+	@ManyToOne
+	@JoinColumn(name = "username")
+	private User username;
+	
 	//
 
-	public FinanceAccounts() {
+	public BankAccount() {
 
 	}
 
-	public FinanceAccounts(Long id, String name, String bank, String iban, Currency currency, int initialBalance, int currentBalance) {
+	public BankAccount(Long id, String name, String bank, String iban, Currency currency, int initialBalance,
+			int currentBalance, User username) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -45,6 +56,7 @@ public class FinanceAccounts {
 		this.currency = currency;
 		this.initialBalance = initialBalance;
 		this.currentBalance = currentBalance;
+		this.username = username;
 	}
 
 	//
@@ -80,7 +92,7 @@ public class FinanceAccounts {
 	public void setIban(String iban) {
 		this.iban = iban;
 	}
-	
+
 	public Currency getCurrency() {
 		return currency;
 	}
@@ -104,5 +116,14 @@ public class FinanceAccounts {
 	public void setCurrentBalance(int currentBalance) {
 		this.currentBalance = currentBalance;
 	}
+
+	public User getUsername() {
+		return username;
+	}
+
+	public void setUser(User username) {
+		this.username = username;
+	}
+	
 
 }

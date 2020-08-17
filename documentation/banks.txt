@@ -1,0 +1,21 @@
+{
+    "id":"1",
+    "bank":"bank 1",
+    "currency":"EURO",
+    "current_balance": 0,
+    "iban":"ES99 9999 9999 9999 9999 9999",
+    "initial_balance": 15000,
+    "name":"demo 1",
+    "user": ""
+}
+
+{
+    "id": 1,
+    "firstName": "john",
+    "lastName": "doe",
+    "email": "jdoe@exemple.com",
+    "username": "jdoe",
+    "password": "password",
+    "role": "USER",
+    "bankAccounts": []
+}
