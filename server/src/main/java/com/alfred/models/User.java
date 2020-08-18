@@ -1,14 +1,11 @@
 package com.alfred.models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -37,12 +34,8 @@ public class User implements Serializable {
 	
 	private Role role;
 
-	@OneToMany(mappedBy = "username")
-	private List<BankAccount> bankAccounts;
-
 	public User() {
-		super();
-		bankAccounts = new ArrayList<BankAccount>();
+		
 	}
 
 	public User(String firstName, String lastName, String email, String username, String password, Role role) {
@@ -52,7 +45,6 @@ public class User implements Serializable {
 		this.username = username;
 		this.password = password;
 		this.role = role;
-		bankAccounts = new ArrayList<BankAccount>();
 	}
 
 	public Long getId() {
@@ -109,18 +101,6 @@ public class User implements Serializable {
 
 	public void setRole(Role role) {
 		this.role = role;
-	}
-
-	public List<BankAccount> getBankAccounts() {
-		return bankAccounts;
-	}
-
-	public void addBank(BankAccount account) {
-		bankAccounts.add(account);
-	}
-
-	public void setBankAccounts(List<BankAccount> bankAccounts) {
-		this.bankAccounts = bankAccounts;
 	}
 
 }
